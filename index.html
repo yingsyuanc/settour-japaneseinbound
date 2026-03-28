@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東南旅遊 外人部 JAPANESE INBOUND - 台湾旅行専門</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-navy: #2C3E50;
+            --secondary-beige: #F5F1E8;
+            --accent-gold: #D4AF37;
+            --warm-white: #FDFBF7;
+            --soft-gray: #95A5A6;
+            --deep-blue: #1A365D;
+            --light-gold: #F4E4C1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--primary-navy);
+            background: var(--warm-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--primary-navy);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.6) 0%, rgba(44, 62, 80, 0.4) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #C4941F 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--deep-blue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--soft-gray);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+        }
+
+        .card-text {
+            color: var(--soft-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--primary-navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .card-button:hover {
+            background: var(--accent-gold);
+            transform: translateX(5px);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--secondary-beige) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .tour-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .tour-content {
+            padding: 2rem;
+        }
+
+        .tour-duration {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--light-gold);
+            color: var(--deep-blue);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .tour-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+        }
+
+        .tour-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .tour-highlights li {
+            padding: 0.4rem 0;
+            color: var(--soft-gray);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tour-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .tour-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--deep-blue) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+        }
+
+        .contact-info {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .payment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .policy-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .policy-item:last-child {
+            border-bottom: none;
+        }
+
+        .policy-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
+        }
+
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-link {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .kuse-branding {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .kuse-branding:hover {
+            color: var(--accent-gold);
+        }
+
+        .kuse-branding svg {
+            height: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .kuse-branding:hover svg {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-nav">
+        <nav style="max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 600; color: var(--primary-navy);">
+                東南旅遊 JAPANESE INBOUND
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="#home" class="nav-link">ホーム</a>
+                <a href="#about" class="nav-link">会社概要</a>
+                <a href="#tours" class="nav-link">ツアー紹介</a>
+                <a href="#articles" class="nav-link">旅行記事</a>
+                <a href="#contact" class="nav-link">予約・お問い合わせ</a>
+                <a href="#payment" class="nav-link">お支払い情報</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <img src="https://api.kuse.ai/api/folder/v1/file/aec608883780d8b1745c5028e2dd21e09b066cb60e8a163efdacb752f1dca8bb_2678792.jpeg" alt="台湾の美しい風景" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">東南旅遊 外人部<br>JAPANESE INBOUND</h1>
+            <p class="hero-subtitle">本物の台湾を、心で感じる旅へ</p>
+            <a href="#contact" class="cta-button">無料相談を予約する</a>
+        </div>
+    </section>
+
+    <section id="about" class="section" style="background: var(--secondary-beige);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">会社概要</h2>
+            <p class="section-subtitle">日本のお客様に最高の台湾体験を提供します</p>
+            
+            <div style="max-width: 900px; margin: 0 auto 4rem; text-align: center; font-size: 1.1rem; line-height: 2; color: var(--primary-navy);">
+                東南旅遊外人部は、日本のお客様に特化した台湾旅行の専門部門です。<br>
+                長年の経験と日本語対応スタッフにより、安心・安全で充実した台湾旅行をお届けします。<br>
+                お客様一人ひとりのご要望に合わせたオーダーメイドのツアーをご提案いたします。
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🗣️</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">日本語対応ガイド</h3>
+                    <p style="color: var(--soft-gray);">経験豊富な日本語ガイドが、台湾の文化や歴史を丁寧にご案内します。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">オーダーメイド</h3>
+                    <p style="color: var(--soft-gray);">お客様のご希望に合わせた、完全カスタマイズのツアーをご提案します。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">20年の実績</h3>
+                    <p style="color: var(--soft-gray);">20年以上にわたり、日本のお客様に信頼される台湾旅行を提供してきました。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">安心サポート</h3>
+                    <p style="color: var(--soft-gray);">24時間緊急サポート体制で、旅行中も安心してお過ごしいただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="section">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title">おすすめツアー</h2>
+            <p class="section-subtitle">厳選された台湾の魅力を体験できるツアーをご用意しています</p>
+            
+            <div class="tour-grid">
+                <div class="tour-card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/ecf5c885887a6857a60e1ec303df0537c09509f4019ef250809e1d769c1a4374_2678837.jpeg" alt="台北・九份ツアー" class="tour-image">
+                    <div class="tour-content">
+                        <span class="tour-duration">1日ツアー</span>
+                        <h3 class="tour-title">台北・九份1日ツアー</h3>
+                        <ul class="tour-highlights">
+                            <li>千と千尋の神隠しのモデル・九份老街散策</li>
+                            <li>台北101展望台からの絶景</li>
+                            <li>人気の夜市で台湾グルメ体験</li>
+                            <li>故宮博物院で中国文化に触れる</li>
+                        </ul>
+                        <div class="tour-price">NT$ 3,500〜</div>
+                        <a href="#contact" class="card-button">詳細を見る</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/9887973d497f6578d76426a468a1ff63de5cda11950089df1e09a89532af18e0_2678868.jpeg" alt="日月潭・台中ツアー" class="tour-image">
+                    <div class="tour-content">
+                        <span class="tour-duration">2日ツアー</span>
+                        <h3 class="tour-title">日月潭・台中2日ツアー</h3>
+                        <ul class="tour-highlights">
+                            <li>台湾最大の湖・日月潭でクルーズ体験</li>
+                            <li>文武廟と慈恩塔の参拝</li>
+                            <li>台中の人気スポット彩虹眷村</li>
+                            <li>逢甲夜市で食べ歩き</li>
+                        </ul>
+                        <div class="tour-price">NT$ 8,800〜</div>
+                        <a href="#contact" class="card-button">詳細を見る</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/c92aed3982a5b9c0d47554261ee43d239c0693eaff8712beff3f4e406b7257a0_2678852.jpeg" alt="花蓮・太魯閣ツアー" class="tour-image">
+                    <div class="tour-content">
+                        <span class="tour-duration">3日ツアー</span>
+                        <h3 class="tour-title">花蓮・太魯閣3日ツアー</h3>
+                        <ul class="tour-highlights">
+                            <li>世界的な景勝地・太魯閣峡谷</li>
+                            <li>清水断崖の絶景ドライブ</li>
+                            <li>七星潭の美しいビーチ</li>
+                            <li>東大門夜市で海鮮グルメ</li>
+                        </ul>
+                        <div class="tour-price">NT$ 15,500〜</div>
+                        <a href="#contact" class="card-button">詳細を見る</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/aec608883780d8b1745c5028e2dd21e09b066cb60e8a163efdacb752f1dca8bb_2678792.jpeg" alt="台湾一周ツアー" class="tour-image">
+                    <div class="tour-content">
+                        <span class="tour-duration">5日ツアー</span>
+                        <h3 class="tour-title">台湾一周5日ツアー</h3>
+                        <ul class="tour-highlights">
+                            <li>台湾の主要都市を巡る充実プラン</li>
+                            <li>北部・中部・南部・東部の名所訪問</li>
+                            <li>各地の名物グルメを堪能</li>
+                            <li>温泉リゾートでリラックス</li>
+                        </ul>
+                        <div class="tour-price">NT$ 28,000〜</div>
+                        <a href="#contact" class="card-button">詳細を見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles" class="section" style="background: var(--secondary-beige);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">旅行記事・動画</h2>
+            <p class="section-subtitle">毎週更新！台湾の魅力をお届けします</p>
+            
+            <div style="max-width: 800px; margin: 0 auto 3rem; text-align: center; font-size: 1.1rem; color: var(--primary-navy);">
+                台湾の隠れた名所、グルメ情報、文化体験など、現地スタッフが厳選した情報を毎週お届けしています。<br>
+                動画コンテンツも随時公開中です。
+            </div>
+
+            <div class="article-grid">
+                <div class="card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/c92aed3982a5b9c0d47554261ee43d239c0693eaff8712beff3f4e406b7257a0_2678852.jpeg" alt="菁桐老街" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">菁桐老街 - タイムスリップできる炭鉱の町</h3>
+                        <p class="card-text">
+                            時光が止まった炭鉱の町・菁桐。台北から約1時間、平溪線の終着駅にある静かな炭鉱の町で、日本統治時代の面影が残るノスタルジックな雰囲気が魅力です。1929年建造の木造駅舎や願掛けの竹筒など、SNS映えするスポットが満載...
+                        </p>
+                        <a href="#contact" class="card-button">続きを読む</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/ecf5c885887a6857a60e1ec303df0537c09509f4019ef250809e1d769c1a4374_2678837.jpeg" alt="平渓天燈祭り" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">平渓天燈祭り - 幻想的なランタン体験</h3>
+                        <p class="card-text">
+                            年に一度の幻想的なイベント、平渓天燈祭り。数千個のランタンが夜空に舞い上がる光景は、まさに圧巻です。願いを込めたランタンを自分で上げる体験も可能。台湾の伝統文化を肌で感じられる特別な時間をお過ごしください...
+                        </p>
+                        <a href="#contact" class="card-button">続きを読む</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://api.kuse.ai/api/folder/v1/file/9887973d497f6578d76426a468a1ff63de5cda11950089df1e09a89532af18e0_2678868.jpeg" alt="台北グルメ" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">台北グルメ巡り - 夜市で食べ歩き</h3>
+                        <p class="card-text">
+                            台北の夜市は台湾グルメの宝庫！小籠包、牛肉麺、臭豆腐、タピオカミルクティーなど、絶対に食べたい名物料理をご紹介。士林夜市、饒河街夜市、寧夏夜市など、それぞれの特徴と人気店を詳しく解説します...
+                        </p>
+                        <a href="#contact" class="card-button">続きを読む</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.1rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    📹 動画コンテンツも随時更新中！YouTubeチャンネルでご覧いただけます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">予約・お問い合わせ</h2>
+            <p class="section-subtitle">お気軽にお問い合わせください</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">お名前 *</label>
+                    <input type="text" class="form-input" required placeholder="山田太郎">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">メールアドレス *</label>
+                    <input type="email" class="form-input" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">電話番号</label>
+                    <input type="tel" class="form-input" placeholder="+81-90-1234-5678">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ご希望ツアー</label>
+                    <select class="form-select">
+                        <option value="">選択してください</option>
+                        <option value="taipei-jiufen">台北・九份1日ツアー</option>
+                        <option value="sunmoon-taichung">日月潭・台中2日ツアー</option>
+                        <option value="hualien-taroko">花蓮・太魯閣3日ツアー</option>
+                        <option value="taiwan-round">台湾一周5日ツアー</option>
+                        <option value="custom">オーダーメイドツアー</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">参加人数</label>
+                    <input type="number" class="form-input" min="1" placeholder="2">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">旅行日程</label>
+                    <input type="text" class="form-input" placeholder="2025年5月10日〜5月15日">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 *</label>
+                    <textarea class="form-textarea" required placeholder="ご質問やご要望をお聞かせください"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">送信する</button>
+            </form>
+
+            <div class="contact-info">
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--primary-navy);">お問い合わせ先</h3>
+                <div class="contact-item">📞 電話：+886-2-xxxx-xxxx</div>
+                <div class="contact-item">✉️ メール：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472d2637262922342207342832332f222634336a33352631222b6924282a693330">[email&#160;protected]</a></div>
+                <div class="contact-item">💬 WeChat / LINE 対応可能</div>
+                <div class="contact-item">🕐 営業時間：9:00-18:00（台湾時間）</div>
+                <p style="margin-top: 1.5rem; color: var(--soft-gray);">
+                    ※ 日本語でお気軽にお問い合わせください<br>
+                    ※ 24時間以内にご返信いたします
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="payment" class="section" style="background: var(--secondary-beige);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">お支払い情報</h2>
+            <p class="section-subtitle">安心・便利な決済方法をご用意しています</p>
+            
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">クレジットカード</h3>
+                    <p style="color: var(--soft-gray);">Visa / Mastercard / JCB</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">🏦</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">銀行振込</h3>
+                    <p style="color: var(--soft-gray);">国際送金対応</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">📱</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">PayPay</h3>
+                    <p style="color: var(--soft-gray);">日本のお客様専用</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">💵</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">現金</h3>
+                    <p style="color: var(--soft-gray);">現地でのお支払い</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <div class="policy-item">
+                    <h3 class="policy-title">キャンセルポリシー</h3>
+                    <p style="color: var(--soft-gray); line-height: 1.8;">
+                        • 出発日の30日前まで：無料キャンセル<br>
+                        • 出発日の29〜15日前：ツアー代金の30%<br>
+                        • 出発日の14〜8日前：ツアー代金の50%<br>
+                        • 出発日の7日前以降：ツアー代金の100%
+                    </p>
+                </div>
+                <div class="policy-item">
+                    <h3 class="policy-title">返金ポリシー</h3>
+                    <p style="color: var(--soft-gray); line-height: 1.8;">
+                        キャンセル料を差し引いた金額を、お申し込み時の決済方法にて7〜14営業日以内にご返金いたします。<br>
+                        天候不良や自然災害による催行中止の場合は、全額返金または日程変更を承ります。
+                    </p>
+                </div>
+                <div class="policy-item">
+                    <h3 class="policy-title">セキュリティ保証</h3>
+                    <p style="color: var(--soft-gray); line-height: 1.8;">
+                        🔒 SSL暗号化通信により、お客様の個人情報とクレジットカード情報を安全に保護しています。<br>
+                        当社は台湾観光局認定の正規旅行会社です。安心してご利用ください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>東南旅遊 外人部</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin-bottom: 1rem;">
+                    JAPANESE INBOUND<br>
+                    日本のお客様専門の台湾旅行サービス
+                </p>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;">
+                    📍 台北市中山區南京東路二段<br>
+                    📞 +886-2-xxxx-xxxx<br>
+                    ✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="701a1100111e15031530031f050418151103045d04021106151c5e131f1d5e0407">[email&#160;protected]</a>
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>サービス</h3>
+                <a href="#tours" class="footer-link">ツアー一覧</a>
+                <a href="#contact" class="footer-link">オーダーメイドツアー</a>
+                <a href="#articles" class="footer-link">旅行記事</a>
+                <a href="#contact" class="footer-link">お問い合わせ</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>会社情報</h3>
+                <a href="#about" class="footer-link">会社概要</a>
+                <a href="#" class="footer-link">プライバシーポリシー</a>
+                <a href="#" class="footer-link">利用規約</a>
+                <a href="#payment" class="footer-link">お支払い情報</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>フォローする</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon" aria-label="LINE">💬</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+                </div>
+                <p style="margin-top: 1.5rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+                    最新情報をSNSで配信中！
+                </p>
+            </div>
+        </div>
+
+        <a href="https://kuse.ai" target="_blank" rel="noopener noreferrer" class="kuse-branding">
+            <span>made with</span>
+            <svg viewBox="0,0,160,44" xmlns="http://www.w3.org/2000/svg"><path d="m.01,20.65C-.43,8.25,9.3-2.03,22.04.34,34.78,2.72,43.29,8.32,43.29,22.9s-8.66,19.01-22.03,20.3C7.9,44.5.46,33.05.01,20.65z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="m146.76,7.94c8.07,0,13.24,6.15,13.24,14.58v1.39h-20.75c.45,4.05,3.51,7.37,8.57,7.37,2.62,0,5.73-1.05,7.62-2.94l2.67,3.83c-2.67,2.55-6.62,3.88-10.9,3.88-8.07,0-14.08-5.6-14.08-14.08,0-7.76,5.67-14.02,13.63-14.02zm0,4.77c-5.01,0-7.29,3.83-7.57,7.1h15.13c-.11-3.16-2.28-7.1-7.57-7.1z" fill="currentColor"/><path d="m86.64,24.49c0,4.15,2.39,6.84,6.84,6.84,4.4,0,6.84-2.69,6.84-6.84V8.55h5.37v16.33c0,6.7-4.06,11.14-12.21,11.14-8.21,0-12.21-4.5-12.21-11.09V8.55h5.37v15.94zm32.99-16.55c4.49,0,8.06,1.47,10.6,3.86l-2.59,3.81c-2.05-2-5.28-3.08-8.06-3.08-2.88,0-4.84,1.37-4.84,3.32,0,1.91,2.64,2.54,5.81,3.27,4.59,1.08,10.26,2.4,10.26,8.46,0,4.94-3.76,8.41-11.14,8.41-4.98,0-8.94-1.76-11.24-4.11l2.54-4.11c1.86,1.91,5.18,3.67,8.84,3.67,3.91,0,5.57-1.66,5.57-3.62,0-2.3-2.88-2.98-6.21-3.76-4.54-1.08-9.87-2.3-9.87-8.06,0-4.5,4.2-8.06,10.31-8.06zM60.79,20.82,71.44,8.55h6.5L66.46,21.26,78.82,35.44h-6.5l-9.28-11.1-2.25,2.49v8.6h-5.33V8.55h5.33v12.27z" fill="currentColor"/></svg>
+        </a>
+
+        <div class="copyright">
+            © 2025 東南旅遊 外人部 JAPANESE INBOUND. All rights reserved.
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        document.addEventListener(`DOMContentLoaded`, function() {
+            const header = document.querySelector(`.header-nav`);
+            const navLinks = document.querySelectorAll(`.nav-link`);
+            const contactForm = document.getElementById(`contactForm`);
+
+            window.addEventListener(`scroll`, function() {
+                if (window.scrollY > 100) {
+                    header.classList.add(`scrolled`);
+                } else {
+                    header.classList.remove(`scrolled`);
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener(`click`, function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute(`href`);
+                    const targetSection = document.querySelector(targetId);
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: `smooth`
+                    });
+                });
+            });
+
+            contactForm.addEventListener(`submit`, function(e) {
+                e.preventDefault();
+                alert(`お問い合わせありがとうございます。\n24時間以内にご返信させていただきます。`);
+                contactForm.reset();
+            });
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: `0px 0px -100px 0px`
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = `1`;
+                        entry.target.style.transform = `translateY(0)`;
+                    }
+                });
+            }, observerOptions);
+
+            const animateElements = document.querySelectorAll(`.card, .feature-item, .tour-card`);
+            animateElements.forEach(el => {
+                el.style.opacity = `0`;
+                el.style.transform = `translateY(30px)`;
+                el.style.transition = `all 0.6s ease-out`;
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+</body>
+</html>
